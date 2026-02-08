@@ -39,3 +39,28 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+@keyframes penguin-slide {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+.animate-penguin-slide {
+  animation: penguin-slide 4.5s ease-in-out infinite;
+}
