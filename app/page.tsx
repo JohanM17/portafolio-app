@@ -1,6 +1,7 @@
 "use client"; 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useDarkMode } from "@/hooks/useDarkMode";
 import { apps, personalInfo } from "@/lib/data";
 import { DockItem } from "@/components/DockItem";
 import Header from "@/components/Header";
@@ -9,15 +10,7 @@ import { InfoBetaModal } from "@/components/InfoBetaModal";
 export default function Home() {
     const [showModal, setShowModal] = useState(false);
     const [showInfoBeta, setShowInfoBeta] = useState(false);
-    const [isDark, setIsDark] = useState(false);
-    useEffect(() => {
-        const html = document.documentElement;
-        const update = () => setIsDark(html.classList.contains('modo-oscuro'));
-        update();
-        const observer = new MutationObserver(update);
-        observer.observe(html, { attributes: true, attributeFilter: ['class'] });
-        return () => observer.disconnect();
-    }, []);
+    const isDark = useDarkMode();
 
     return (
         <div className={`relative min-h-screen overflow-hidden ${isDark ? 'bg-black text-white' : 'bg-black text-white'}`}>
