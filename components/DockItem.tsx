@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 type DockItemProps = {
     title: string;
@@ -12,12 +13,16 @@ export function DockItem({ title, icon, href, description }: DockItemProps) {
         <Link
             href={href}
             aria-label={description ? `${title}: ${description}` : title}
-            className="group relative z-10 flex w-16 flex-col items-center gap-1 transition-transform duration-200 group-hover:z-20"
+            className="group relative z-10 flex w-auto md:w-16 flex-col items-center gap-0 mb-0 pb-0 py-0 md:mb-0 md:pb-0.5 md:py-2 transition-transform duration-200 group-hover:z-20 px-0 md:px-0"
         >
-            <span className="relative z-20 flex h-10 w-10 items-center justify-center rounded-2xl border border-emerald-500/30 bg-emerald-500/10 text-xl text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.45)] transition duration-200 group-hover:-translate-y-3 group-hover:scale-110 group-hover:shadow-[0_0_18px_rgba(16,185,129,0.6)]">
-                {icon}
+            <span className="relative z-20 flex h-12 w-12 md:h-10 md:w-10 items-center justify-center rounded-2xl border border-emerald-500/30 bg-emerald-500/10 text-xl text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.45)] transition duration-200 group-hover:-translate-y-3 group-hover:scale-110 group-hover:shadow-[0_0_18px_rgba(16,185,129,0.6)]">
+                {icon.startsWith("/") ? (
+                    <Image src={icon} alt={title} width={40} height={40} className="w-10 h-10 md:w-8 md:h-8 object-contain" />
+                ) : (
+                    icon
+                )}
             </span>
-            <span className="text-[10px] font-medium text-emerald-100/90 text-center">
+            <span className="text-[9px] md:text-[10px] font-medium text-emerald-100/90 text-center mt-0 md:mt-0">
                 {title}
             </span>
         </Link>
