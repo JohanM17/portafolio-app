@@ -18,8 +18,13 @@ export default function Header({ compact = false, showBack = false, onShowInfoBe
     const [showLangNotice, setShowLangNotice] = useState(false);
     useEffect(() => {
         const html = document.documentElement;
-        // Por defecto, quitar modo oscuro (modo color)
-        html.classList.remove('modo-oscuro');
+        // Leer preferencia de modo desde localStorage
+        const savedMode = typeof window !== 'undefined' ? localStorage.getItem('theme-mode') : null;
+        if (savedMode === 'oscuro') {
+            html.classList.add('modo-oscuro');
+        } else {
+            html.classList.remove('modo-oscuro');
+        }
         const update = () => setIsDark(html.classList.contains('modo-oscuro'));
         update();
         const observer = new MutationObserver(update);
@@ -55,8 +60,10 @@ export default function Header({ compact = false, showBack = false, onShowInfoBe
         if (typeof window !== 'undefined') {
             if (mode === 'oscuro') {
                 document.documentElement.classList.add('modo-oscuro');
+                localStorage.setItem('theme-mode', 'oscuro');
             } else {
                 document.documentElement.classList.remove('modo-oscuro');
+                localStorage.setItem('theme-mode', 'color');
             }
         }
     }
