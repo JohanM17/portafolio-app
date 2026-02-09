@@ -4,9 +4,11 @@ import { useState, useEffect } from "react";
 import { apps, personalInfo } from "@/lib/data";
 import { DockItem } from "@/components/DockItem";
 import Header from "@/components/Header";
+import { InfoBetaModal } from "@/components/InfoBetaModal";
 
 export default function Home() {
     const [showModal, setShowModal] = useState(false);
+    const [showInfoBeta, setShowInfoBeta] = useState(false);
     const [isDark, setIsDark] = useState(false);
     useEffect(() => {
         const html = document.documentElement;
@@ -34,7 +36,7 @@ export default function Home() {
                 </>
             )}
             <main className="relative z-10 flex min-h-screen w-full flex-col gap-0 px-2 pt-0 pb-6 sm:gap-3 sm:px-4 sm:pt-1 sm:pb-8 md:gap-16 md:px-8 md:py-12 lg:px-12 lg:py-12">
-                <Header compact={false} />
+                <Header compact={false} onShowInfoBeta={() => setShowInfoBeta(true)} />
                 {/* MOBILE: Foto arriba, luego texto. DESKTOP: layout original */}
                 <div className="block md:hidden w-full">
                     <div className="flex flex-col items-center w-full mt-0">
@@ -208,6 +210,8 @@ export default function Home() {
                     </div>
                 </section>
             </main>
+            {/* Modal Info Beta global */}
+            <InfoBetaModal open={showInfoBeta} onClose={() => setShowInfoBeta(false)} />
             {/* Modal temporal para Ver CV */}
             {showModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">

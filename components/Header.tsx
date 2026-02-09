@@ -1,6 +1,5 @@
 "use client";
 
-
 import Link from "next/link";
 import Image from "next/image";
 import MobileMenu from "./MobileMenu";
@@ -8,7 +7,7 @@ import MobileMenu from "./MobileMenu";
 import { useRouter } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 
-export default function Header({ compact = false, showBack = false }: { compact?: boolean; showBack?: boolean }) {
+export default function Header({ compact = false, showBack = false, onShowInfoBeta }: { compact?: boolean; showBack?: boolean; onShowInfoBeta?: () => void }) {
     const router = useRouter();
     const [themeMenu, setThemeMenu] = useState(false);
     const themeMenuRef = useRef<HTMLDivElement>(null);
@@ -199,7 +198,11 @@ export default function Header({ compact = false, showBack = false }: { compact?
                         </div>
                     )}
                 </div>
-                <button title="Info" className={`hover:opacity-80 transition cursor-pointer ${isDark ? 'border border-white text-white shadow-none' : ''} rounded-full p-1`}>
+                <button
+                    title="Info"
+                    className={`hover:opacity-80 transition cursor-pointer ${isDark ? 'border border-white text-white shadow-none' : ''} rounded-full p-1`}
+                    onClick={onShowInfoBeta}
+                >
                     <Image src="/Iconos-Header/Icono_Info-SF.png" alt="Info" width={28} height={28} className="w-7 h-7 object-contain" priority />
                 </button>
             </nav>
