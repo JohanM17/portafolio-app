@@ -14,7 +14,7 @@ export default function Header({ compact = false, showBack = false, onShowInfoBe
     const [isDark, setIsDark] = useState(false);
     const [langMenu, setLangMenu] = useState(false);
     const langMenuRef = useRef<HTMLDivElement>(null);
-    const [language, setLanguage] = useState<'es' | 'en'>('es');
+    // Solo para selector visual y aviso
     const [showLangNotice, setShowLangNotice] = useState(false);
     useEffect(() => {
         const html = document.documentElement;
@@ -46,7 +46,6 @@ export default function Header({ compact = false, showBack = false, onShowInfoBe
                 const notice = document.getElementById('lang-notice');
                 if (notice && !notice.contains(e.target as Node)) {
                     setShowLangNotice(false);
-                    setLanguage('es');
                 }
             }
         }
@@ -175,15 +174,14 @@ export default function Header({ compact = false, showBack = false, onShowInfoBe
                     {langMenu && (
                         <div className="absolute right-0 mt-2 w-36 bg-zinc-900 border border-zinc-700 rounded-xl shadow-lg z-50 flex flex-col overflow-hidden animate-fade-in">
                             <button
-                                className={`w-full px-4 py-2 text-left text-white text-sm transition ${language === 'es' ? 'bg-zinc-800 font-bold ring-2 ring-white' : 'hover:bg-zinc-800'}`}
-                                onClick={() => setLanguage('es')}
+                                className="w-full px-4 py-2 text-left text-white text-sm transition hover:bg-zinc-800"
+                                onClick={() => setLangMenu(false)}
                             >
                                 Español
                             </button>
                             <button
-                                className={`w-full px-4 py-2 text-left text-white text-sm transition ${language === 'en' ? 'bg-zinc-800 font-bold ring-2 ring-white' : 'hover:bg-zinc-800'}`}
+                                className="w-full px-4 py-2 text-left text-white text-sm transition hover:bg-zinc-800"
                                 onClick={() => {
-                                    setLanguage('en');
                                     setShowLangNotice(true);
                                     setLangMenu(false);
                                 }}
