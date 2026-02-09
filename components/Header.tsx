@@ -6,10 +6,46 @@ import Image from "next/image";
 import MobileMenu from "./MobileMenu";
 
 import { useRouter } from "next/navigation";
+import { useState, useRef, useEffect } from "react";
 
 export default function Header({ compact = false, showBack = false }: { compact?: boolean; showBack?: boolean }) {
     const router = useRouter();
-    return (
+    const [themeMenu, setThemeMenu] = useState(false);
+    const themeMenuRef = useRef<HTMLDivElement>(null);
+    const [isDark, setIsDark] = useState(false);
+    useEffect(() => {
+        const html = document.documentElement;
+        const update = () => setIsDark(html.classList.contains('modo-oscuro'));
+        update();
+        const observer = new MutationObserver(update);
+        observer.observe(html, { attributes: true, attributeFilter: ['class'] });
+        return () => observer.disconnect();
+    }, []);
+
+    // Cerrar menú si se hace click fuera
+    useEffect(() => {
+        function handleClick(e: MouseEvent) {
+            if (themeMenuRef.current && !themeMenuRef.current.contains(e.target as Node)) {
+                setThemeMenu(false);
+            }
+        }
+        if (themeMenu) document.addEventListener('mousedown', handleClick);
+        return () => document.removeEventListener('mousedown', handleClick);
+    }, [themeMenu]);
+
+    // Cambiar tema global
+    function setTheme(mode: 'oscuro' | 'color') {
+        setThemeMenu(false);
+        if (typeof window !== 'undefined') {
+            if (mode === 'oscuro') {
+                document.documentElement.classList.add('modo-oscuro');
+            } else {
+                document.documentElement.classList.remove('modo-oscuro');
+            }
+        }
+    }
+
+    return ( 
         <header
             className={
                 compact
@@ -33,20 +69,25 @@ export default function Header({ compact = false, showBack = false }: { compact?
                 <span
                     className={
                         compact
-                            ? "sm:flex hidden flex-col text-2xl font-semibold tracking-wide text-green-400"
-                            : "flex flex-col text-lg font-bold tracking-wide text-green-400"
+                            ? `sm:flex hidden flex-col text-2xl font-semibold tracking-wide ${isDark ? 'text-white' : 'text-green-400'}`
+                            : `flex flex-col text-lg font-bold tracking-wide ${isDark ? 'text-white' : 'text-green-400'}`
                     }
                     style={!compact ? { marginLeft: '0.5rem' } : {}}
                 >
                     Johan Molina
-                    <span className={compact ? "text-lg text-green-300 font-normal tracking-normal" : "text-sm text-green-300 font-normal tracking-normal"}>
+                    <span className={compact ? `${isDark ? 'text-white' : 'text-green-300'} text-lg font-normal tracking-normal` : `${isDark ? 'text-white' : 'text-green-300'} text-sm font-normal tracking-normal`}>
                         Software Engineer
                     </span>
                 </span>
             </div>
             {/* Centro: Versión Beta */}
             <div className="absolute left-[60%] sm:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none">
-                <span className="bg-white/90 text-black font-bold rounded-full px-4 py-1 shadow-lg text-sm tracking-widest border border-emerald-400/60" style={{letterSpacing: '0.15em'}}>Beta</span>
+                <span
+                    className={`bg-white/90 text-black font-bold rounded-full px-4 py-1 shadow-lg text-sm tracking-widest border ${isDark ? 'border-white' : 'border-emerald-400/60'}`}
+                    style={{ letterSpacing: '0.15em' }}
+                >
+                    Beta
+                </span>
             </div>
             {/* Derecha: Iconos globales */}
             {/* Mobile: menú hamburguesa */}
@@ -72,16 +113,38 @@ export default function Header({ compact = false, showBack = false }: { compact?
             </div>
             {/* Desktop: iconos normales */}
             <nav className="hidden md:flex items-center gap-8 text-xl">
-                <Link href="/" title="Home" className="hover:opacity-80 transition">
+                <Link href="/" title="Home" className={`hover:opacity-80 transition ${isDark ? 'border border-white text-white shadow-none' : ''} rounded-full p-1`}>
                     <Image src="/Iconos-Header/Icono_Home-SF.png" alt="Home" width={34} height={34} className="w-9 h-9 object-contain" priority />
                 </Link>
-                <button title="Theme" className="hover:opacity-80 transition cursor-pointer">
-                    <Image src="/Iconos-Header/Icono_Luna-SF.png" alt="Luna" width={28} height={28} className="w-7 h-7 object-contain" priority />
-                </button>
-                <button title="Language" className="hover:opacity-80 transition cursor-pointer">
+                <div className="relative" ref={themeMenuRef}>
+                    <button
+                        title="Theme"
+                        className={`hover:opacity-80 transition cursor-pointer ${isDark ? 'border border-white text-white shadow-none' : ''} rounded-full p-1`}
+                        onClick={() => setThemeMenu((v) => !v)}
+                    >
+                        <Image src="/Iconos-Header/Icono_Luna-SF.png" alt="Luna" width={28} height={28} className="w-7 h-7 object-contain" priority />
+                    </button>
+                    {themeMenu && (
+                        <div className="absolute right-0 mt-2 w-36 bg-zinc-900 border border-zinc-700 rounded-xl shadow-lg z-50 flex flex-col overflow-hidden animate-fade-in">
+                            <button
+                                className={`w-full px-4 py-2 text-left text-white text-sm transition ${isDark ? 'bg-zinc-800 font-bold ring-2 ring-white' : 'hover:bg-zinc-800'}`}
+                                onClick={() => setTheme('oscuro')}
+                            >
+                                Modo oscuro
+                            </button>
+                            <button
+                                className={`w-full px-4 py-2 text-left text-white text-sm transition ${!isDark ? 'bg-zinc-800 font-bold ring-2 ring-white' : 'hover:bg-zinc-800'}`}
+                                onClick={() => setTheme('color')}
+                            >
+                                Modo color
+                            </button>
+                        </div>
+                    )}
+                </div>
+                <button title="Language" className={`hover:opacity-80 transition cursor-pointer ${isDark ? 'border border-white text-white shadow-none' : ''} rounded-full p-1`}>
                     <Image src="/Iconos-Header/Icono_Idioma-SF.png" alt="Idioma" width={28} height={28} className="w-7 h-7 object-contain" priority />
                 </button>
-                <button title="Info" className="hover:opacity-80 transition cursor-pointer">
+                <button title="Info" className={`hover:opacity-80 transition cursor-pointer ${isDark ? 'border border-white text-white shadow-none' : ''} rounded-full p-1`}>
                     <Image src="/Iconos-Header/Icono_Info-SF.png" alt="Info" width={28} height={28} className="w-7 h-7 object-contain" priority />
                 </button>
             </nav>

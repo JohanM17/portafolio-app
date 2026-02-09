@@ -1,34 +1,46 @@
 "use client"; 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { apps, personalInfo } from "@/lib/data";
 import { DockItem } from "@/components/DockItem";
 import Header from "@/components/Header";
 
 export default function Home() {
     const [showModal, setShowModal] = useState(false);
+    const [isDark, setIsDark] = useState(false);
+    useEffect(() => {
+        const html = document.documentElement;
+        const update = () => setIsDark(html.classList.contains('modo-oscuro'));
+        update();
+        const observer = new MutationObserver(update);
+        observer.observe(html, { attributes: true, attributeFilter: ['class'] });
+        return () => observer.disconnect();
+    }, []);
 
     return (
-        <div className="relative min-h-screen bg-black text-white overflow-hidden">
-            {/* Fondo decorativo, absolutamente posicionado, adaptado a la ventana */}
-            <div
-                aria-hidden="true"
-                className="pointer-events-none select-none fixed top-0 left-0 w-full h-full z-0"
-                style={{
-                    background: `radial-gradient(ellipse 70% 50% at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.85) 100%), url(/Background.png) center / cover no-repeat`,
-                    opacity: 0.93,
-                }}
-            />
-            {/* Overlay negro para oscurecer el fondo */}
-            <div className="pointer-events-none select-none fixed top-0 left-0 w-full h-full z-10 bg-black/40" />
+        <div className={`relative min-h-screen overflow-hidden ${isDark ? 'bg-black text-white' : 'bg-black text-white'}`}>
+            {/* Fondo decorativo y overlay solo si NO es modo oscuro */}
+            {!isDark && (
+                <>
+                    <div
+                        aria-hidden="true"
+                        className="pointer-events-none select-none fixed top-0 left-0 w-full h-full z-0 bg-decorativo"
+                        style={{
+                            background: `radial-gradient(ellipse 70% 50% at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.85) 100%), url(/Background.png) center / cover no-repeat`,
+                            opacity: 0.93,
+                        }}
+                    />
+                    <div className="pointer-events-none select-none fixed top-0 left-0 w-full h-full z-10 bg-black/40 overlay-negro" />
+                </>
+            )}
             <main className="relative z-10 flex min-h-screen w-full flex-col gap-0 px-2 pt-0 pb-6 sm:gap-3 sm:px-4 sm:pt-1 sm:pb-8 md:gap-16 md:px-8 md:py-12 lg:px-12 lg:py-12">
                 <Header compact={false} />
                 {/* MOBILE: Foto arriba, luego texto. DESKTOP: layout original */}
                 <div className="block md:hidden w-full">
                     <div className="flex flex-col items-center w-full mt-0">
                         <div className="relative h-32 w-32 mt-24">
-                            <div className="absolute inset-0 rounded-full bg-emerald-500/30 blur-2xl" />
-                            <div className="relative h-full w-full overflow-hidden rounded-full border-2 border-emerald-400/60 bg-zinc-950 shadow-[0_0_40px_rgba(16,185,129,0.6)]">
+                            {!isDark && <div className="absolute inset-0 rounded-full bg-emerald-500/30 blur-2xl" />}
+                            <div className={`relative h-full w-full overflow-hidden rounded-full ${isDark ? 'border-none bg-black shadow-none' : 'border-2 border-emerald-400/60 bg-zinc-950 shadow-[0_0_40px_rgba(16,185,129,0.6)]'}`}> 
                                 <Image
                                     src="/profile.jpeg"
                                     alt="Foto de perfil"
@@ -51,12 +63,12 @@ export default function Home() {
                     </div>
                     <section className="flex flex-col gap-4 w-full justify-center mt-8">
                         <h1 className="text-3xl font-semibold leading-tight text-center">
-                            <span className="text-emerald-200">
+                            <span className={isDark ? 'text-white' : 'text-emerald-200'}>
                                 {personalInfo.title}
                             </span>
                         </h1>
                         {personalInfo.subtitle && (
-                            <span className="text-base text-emerald-300 font-medium -mt-2 mb-2 ml-1 text-center">{personalInfo.subtitle}</span>
+                            <span className={`text-base font-medium -mt-2 mb-2 ml-1 text-center ${isDark ? 'text-white' : 'text-emerald-300'}`}>{personalInfo.subtitle}</span>
                         )}
                         <p className="text-base text-white text-center mt-2">
                             {personalInfo.location}
@@ -68,7 +80,7 @@ export default function Home() {
                             <button
                                 type="button"
                                 onClick={() => setShowModal(true)}
-                                className="inline-flex items-center justify-center rounded-full border border-emerald-400/40 bg-black/80 px-4 py-2 text-sm font-semibold text-emerald-100 shadow-[0_0_18px_rgba(16,185,129,0.4)] transition hover:bg-emerald-500/20"
+                                className={`inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition ${isDark ? 'border border-white bg-black text-white shadow-none' : 'border border-emerald-400/40 bg-black/80 text-emerald-100 shadow-[0_0_18px_rgba(16,185,129,0.4)] hover:bg-emerald-500/20'}`}
                             >
                                 Ver CV
                             </button>
@@ -76,7 +88,7 @@ export default function Home() {
                                 href={personalInfo.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center justify-center rounded-full bg-zinc-900 border border-emerald-400/40 w-10 h-10 text-2xl text-white hover:bg-emerald-500/20 transition shadow"
+                                className={`flex items-center justify-center rounded-full w-10 h-10 text-2xl transition shadow ${isDark ? 'bg-black border border-white text-white shadow-none' : 'bg-zinc-900 border border-emerald-400/40 text-white hover:bg-emerald-500/20'}`}
                                 aria-label="GitHub"
                             >
                                 <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
@@ -87,7 +99,7 @@ export default function Home() {
                                 href={personalInfo.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center justify-center rounded-full bg-zinc-900 border border-emerald-400/40 w-10 h-10 text-2xl text-white hover:bg-emerald-500/20 transition shadow"
+                                className={`flex items-center justify-center rounded-full w-10 h-10 text-2xl transition shadow ${isDark ? 'bg-black border border-white text-white shadow-none' : 'bg-zinc-900 border border-emerald-400/40 text-white hover:bg-emerald-500/20'}`}
                                 aria-label="LinkedIn"
                             >
                                 <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
@@ -118,7 +130,7 @@ export default function Home() {
                             <button
                                 type="button"
                                 onClick={() => setShowModal(true)}
-                                className="inline-flex items-center justify-center rounded-full border border-emerald-400/40 bg-black/80 px-4 py-2 text-sm font-semibold text-emerald-100 shadow-[0_0_18px_rgba(16,185,129,0.4)] transition hover:bg-emerald-500/20"
+                                className={`inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition ${isDark ? 'border border-white bg-black text-white shadow-none' : 'border border-emerald-400/40 bg-black/80 text-emerald-100 shadow-[0_0_18px_rgba(16,185,129,0.4)] hover:bg-emerald-500/20'}`}
                             >
                                 Ver CV
                             </button>
@@ -126,7 +138,7 @@ export default function Home() {
                                 href={personalInfo.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center justify-center rounded-full bg-zinc-900 border border-emerald-400/40 w-10 h-10 text-2xl text-white hover:bg-emerald-500/20 transition shadow"
+                                className={`flex items-center justify-center rounded-full w-10 h-10 text-2xl transition shadow ${isDark ? 'bg-black border border-white text-white shadow-none' : 'bg-zinc-900 border border-emerald-400/40 text-white hover:bg-emerald-500/20'}`}
                                 aria-label="GitHub"
                             >
                                 <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
@@ -137,7 +149,7 @@ export default function Home() {
                                 href={personalInfo.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center justify-center rounded-full bg-zinc-900 border border-emerald-400/40 w-10 h-10 text-2xl text-white hover:bg-emerald-500/20 transition shadow"
+                                className={`flex items-center justify-center rounded-full w-10 h-10 text-2xl transition shadow ${isDark ? 'bg-black border border-white text-white shadow-none' : 'bg-zinc-900 border border-emerald-400/40 text-white hover:bg-emerald-500/20'}`}
                                 aria-label="LinkedIn"
                             >
                                 <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
@@ -148,8 +160,8 @@ export default function Home() {
                     </section>
                     <section className="flex flex-col items-center md:items-end justify-start md:justify-center w-full md:w-1/2">
                         <div className="relative h-28 w-28 md:h-60 md:w-70 -mt-14 md:mt-16 md:mr-16 lg:mr-32 mx-auto md:mx-0">
-                            <div className="absolute inset-0 rounded-full bg-emerald-500/30 blur-2xl" />
-                            <div className="relative h-full w-full overflow-hidden rounded-full border-2 border-emerald-400/60 bg-zinc-950 shadow-[0_0_40px_rgba(16,185,129,0.6)]">
+                            {!isDark && <div className="absolute inset-0 rounded-full bg-emerald-500/30 blur-2xl" />}
+                            <div className={`relative h-full w-full overflow-hidden rounded-full ${isDark ? 'border-none bg-black shadow-none' : 'border-2 border-emerald-400/60 bg-zinc-950 shadow-[0_0_40px_rgba(16,185,129,0.6)]'}`}> 
                                 <Image
                                     src="/profile.jpeg"
                                     alt="Foto de perfil"
@@ -188,6 +200,7 @@ export default function Home() {
                                         description={app.description}
                                         icon={app.icon}
                                         href={app.href}
+                                        isDark={isDark}
                                     />
                                 ))}
                             </div>

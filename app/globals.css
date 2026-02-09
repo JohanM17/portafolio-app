@@ -1,3 +1,45 @@
+html.modo-oscuro {
+  --background: #000;
+  --foreground: #fff;
+}
+
+html.modo-oscuro body {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+html.modo-oscuro .dock-bg {
+  background: #000 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+html.modo-oscuro .dockitem-bg {
+  background: #111 !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #fff !important;
+}
+
+html.modo-oscuro .text-emerald-100,
+html.modo-oscuro .text-emerald-200,
+html.modo-oscuro .text-emerald-300,
+html.modo-oscuro .text-emerald-400,
+html.modo-oscuro .text-emerald-500 {
+  color: #fff !important;
+}
+
+html.modo-oscuro .border-emerald-400\/30,
+html.modo-oscuro .border-emerald-500\/30,
+html.modo-oscuro .border-emerald-900\/40 {
+  border: none !important;
+}
+
+html.modo-oscuro .shadow-\[0_0_30px_rgba\(16\,185\,129\,0\.4\)\],
+html.modo-oscuro .shadow-\[0_0_12px_rgba\(16\,185\,129\,0\.45\)\],
+html.modo-oscuro .shadow-\[0_0_18px_rgba\(16\,185\,129\,0\.6\)\] {
+  box-shadow: none !important;
+}
 @import "tailwindcss";
 
 :root {
@@ -6,12 +48,6 @@
   color-scheme: light dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
 @media (prefers-color-scheme: dark) {
   :root {
