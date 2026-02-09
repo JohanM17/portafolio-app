@@ -13,8 +13,14 @@ export default function Header({ compact = false, showBack = false }: { compact?
     const [themeMenu, setThemeMenu] = useState(false);
     const themeMenuRef = useRef<HTMLDivElement>(null);
     const [isDark, setIsDark] = useState(false);
+    const [langMenu, setLangMenu] = useState(false);
+    const langMenuRef = useRef<HTMLDivElement>(null);
+    const [language, setLanguage] = useState<'es' | 'en'>('es');
+    const [showLangNotice, setShowLangNotice] = useState(false);
     useEffect(() => {
         const html = document.documentElement;
+        // Por defecto, quitar modo oscuro (modo color)
+        html.classList.remove('modo-oscuro');
         const update = () => setIsDark(html.classList.contains('modo-oscuro'));
         update();
         const observer = new MutationObserver(update);
@@ -28,10 +34,21 @@ export default function Header({ compact = false, showBack = false }: { compact?
             if (themeMenuRef.current && !themeMenuRef.current.contains(e.target as Node)) {
                 setThemeMenu(false);
             }
+            if (langMenuRef.current && !langMenuRef.current.contains(e.target as Node)) {
+                setLangMenu(false);
+            }
+            // Ocultar aviso de idioma si está visible y se hace click fuera
+            if (showLangNotice) {
+                const notice = document.getElementById('lang-notice');
+                if (notice && !notice.contains(e.target as Node)) {
+                    setShowLangNotice(false);
+                    setLanguage('es');
+                }
+            }
         }
-        if (themeMenu) document.addEventListener('mousedown', handleClick);
+        if (themeMenu || langMenu || showLangNotice) document.addEventListener('mousedown', handleClick);
         return () => document.removeEventListener('mousedown', handleClick);
-    }, [themeMenu]);
+    }, [themeMenu, langMenu, showLangNotice]);
 
     // Cambiar tema global
     function setTheme(mode: 'oscuro' | 'color') {
@@ -141,9 +158,47 @@ export default function Header({ compact = false, showBack = false }: { compact?
                         </div>
                     )}
                 </div>
-                <button title="Language" className={`hover:opacity-80 transition cursor-pointer ${isDark ? 'border border-white text-white shadow-none' : ''} rounded-full p-1`}>
-                    <Image src="/Iconos-Header/Icono_Idioma-SF.png" alt="Idioma" width={28} height={28} className="w-7 h-7 object-contain" priority />
-                </button>
+                <div className="relative" ref={langMenuRef}>
+                    <button
+                        title="Idioma / Language"
+                        className={`hover:opacity-80 transition cursor-pointer ${isDark ? 'border border-white text-white shadow-none' : ''} rounded-full p-1`}
+                        onClick={() => setLangMenu((v) => !v)}
+                    >
+                        <Image src="/Iconos-Header/Icono_Idioma-SF.png" alt="Idioma" width={28} height={28} className="w-7 h-7 object-contain" priority />
+                    </button>
+                    {langMenu && (
+                        <div className="absolute right-0 mt-2 w-36 bg-zinc-900 border border-zinc-700 rounded-xl shadow-lg z-50 flex flex-col overflow-hidden animate-fade-in">
+                            <button
+                                className={`w-full px-4 py-2 text-left text-white text-sm transition ${language === 'es' ? 'bg-zinc-800 font-bold ring-2 ring-white' : 'hover:bg-zinc-800'}`}
+                                onClick={() => setLanguage('es')}
+                            >
+                                Español
+                            </button>
+                            <button
+                                className={`w-full px-4 py-2 text-left text-white text-sm transition ${language === 'en' ? 'bg-zinc-800 font-bold ring-2 ring-white' : 'hover:bg-zinc-800'}`}
+                                onClick={() => {
+                                    setLanguage('en');
+                                    setShowLangNotice(true);
+                                    setLangMenu(false);
+                                }}
+                            >
+                                English
+                            </button>
+                        </div>
+                    )}
+                    {/* Aviso de idioma en proceso */}
+                    {showLangNotice && (
+                        <div
+                            id="lang-notice"
+                            className="fixed top-20 right-6 md:right-12 z-100 animate-fade-in"
+                            style={{ pointerEvents: 'auto' }}
+                        >
+                            <div className="px-5 py-3 rounded-2xl shadow-2xl border border-zinc-800 text-center font-semibold text-base max-w-xs bg-black text-white flex flex-col items-center gap-2">
+                                <span className="text-lg">Pronto porque esta difícil :c</span>
+                            </div>
+                        </div>
+                    )}
+                </div>
                 <button title="Info" className={`hover:opacity-80 transition cursor-pointer ${isDark ? 'border border-white text-white shadow-none' : ''} rounded-full p-1`}>
                     <Image src="/Iconos-Header/Icono_Info-SF.png" alt="Info" width={28} height={28} className="w-7 h-7 object-contain" priority />
                 </button>
