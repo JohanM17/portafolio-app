@@ -4,7 +4,7 @@
 export const infoBeta = {
     titulo: "Versión Beta",
     descripcion: [
-        "Esta es la primera versión beta del portafolio.",
+        "Esta es la versión beta 1.1 del portafolio.",
         "El Home fue diseñado con un estilo tipo launcher, integrando accesos visuales a las distintas secciones, foto de perfil y un header minimalista."
     ],
     items: [
