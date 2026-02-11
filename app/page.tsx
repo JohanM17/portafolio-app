@@ -20,7 +20,7 @@ export default function Home() {
             {/* Fondo decorativo (solo en modo claro) */}
             <BackgroundDecorativo isDark={isDark} />
 
-            <main className="relative z-10 flex min-h-screen w-full flex-col gap-0 px-2 pt-0 pb-6 sm:gap-3 sm:px-4 sm:pt-1 sm:pb-8 md:gap-10 md:px-8 md:py-12 lg:px-12 lg:py-12">
+            <main className="relative z-10 flex min-h-screen w-full flex-col gap-0 px-2 pt-0 pb-8 sm:gap-3 sm:px-4 sm:pt-1 sm:pb-10 md:gap-10 md:px-8 md:py-12 lg:px-12 lg:py-12">
                 <Header compact={false} onShowInfoBeta={() => setShowInfoBeta(true)} />
 
                 {/* CONTENIDO MOBILE (Oculto en Desktop) */}

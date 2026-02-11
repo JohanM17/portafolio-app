@@ -21,7 +21,7 @@ export default function Header({ compact = false, showBack = false, onShowInfoBe
     const isDark = useDarkMode(); // Saber si está en modo oscuro
     const langMenuRef = useRef<HTMLDivElement>(null); // Referencia para el menú de idioma
 
-    return ( 
+    return (
         // El header principal, cambia de estilo si es compacto o no
         <header
             className={
@@ -44,7 +44,7 @@ export default function Header({ compact = false, showBack = false, onShowInfoBe
                         <Image src="/Iconos-Header/Icono_Retroceso-SF.png" alt="Retroceso" width={38} height={38} className="w-10 h-10 object-contain" priority />
                     </button>
                 )}
-                
+
                 {/* Nombre y título de la persona */}
                 <NameAndTitle isDark={isDark} compact={compact} />
             </div>
@@ -54,7 +54,7 @@ export default function Header({ compact = false, showBack = false, onShowInfoBe
 
             {/* Bloque: Menú móvil (solo se ve en pantallas pequeñas) */}
             <div className="flex md:hidden">
-                <MobileMenu>
+                <MobileMenu isDark={isDark}>
                     <HomeButton isDark={isDark} />
                     <ThemeButton isDark={isDark} />
                     <LanguageButton isDark={isDark} />

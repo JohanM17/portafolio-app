@@ -18,7 +18,7 @@ export function DockItem({ title, icon, href, description, isDark = false }: Doc
         <Link
             href={href}
             aria-label={description ? `${title}: ${description}` : title}
-            className="group relative z-10 flex w-16 flex-col items-center gap-0 transition-transform duration-200 group-hover:z-20 py-2"
+            className="group relative z-10 flex w-14 flex-col items-center gap-0 transition-transform duration-200 group-hover:z-20 pt-2 pb-1"
         >
             {/* Bloque del icono, cambia estilo según modo oscuro */}
             <span

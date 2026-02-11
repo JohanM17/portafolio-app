@@ -8,8 +8,8 @@ type AppDockProps = {
 
 export function AppDock({ isDark }: AppDockProps) {
     return (
-        <section className="mt-auto w-full px-2 pb-4">
-            <div className={`relative mx-auto w-full max-w-5xl rounded-3xl border p-2 ${isDark ? 'bg-black/80 border-white/20' : 'bg-black/80 border-emerald-400/30 shadow-[0_0_30px_rgba(16,185,129,0.4)]'
+        <section className="mt-auto w-full px-2 pb-0 md:-mb-2">
+            <div className={`relative mx-auto w-fit max-w-[95%] rounded-3xl border p-2 md:pt-1.5 md:pb-0 ${isDark ? 'bg-black/80 border-white/20' : 'bg-black/80 border-emerald-400/30 shadow-[0_0_30px_rgba(16,185,129,0.4)]'
                 }`}>
                 {/* Contenedor con scroll horizontal en móvil, centrado en desktop */}
                 <div
