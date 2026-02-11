@@ -20,7 +20,7 @@ export default function Home() {
             {/* Fondo decorativo (solo en modo claro) */}
             <BackgroundDecorativo isDark={isDark} />
 
-            <main className="relative z-10 flex min-h-screen w-full flex-col gap-0 px-2 pt-0 pb-6 sm:gap-3 sm:px-4 sm:pt-1 sm:pb-8 md:gap-16 md:px-8 md:py-12 lg:px-12 lg:py-12">
+            <main className="relative z-10 flex min-h-screen w-full flex-col gap-0 px-2 pt-0 pb-6 sm:gap-3 sm:px-4 sm:pt-1 sm:pb-8 md:gap-10 md:px-8 md:py-12 lg:px-12 lg:py-12">
                 <Header compact={false} onShowInfoBeta={() => setShowInfoBeta(true)} />
 
                 {/* CONTENIDO MOBILE (Oculto en Desktop) */}
@@ -36,9 +36,9 @@ export default function Home() {
 
                     <HeroInfo
                         isDark={isDark}
-                        containerClass="flex flex-col gap-4 w-full justify-center mt-8"
-                        titleClass="text-3xl font-semibold leading-tight text-center"
-                        subtitleClass="text-base font-medium -mt-2 mb-2 ml-1 text-center"
+                        containerClass="flex flex-col gap-4 w-full justify-center items-center text-center mt-8"
+                        titleClass="text-3xl font-semibold leading-tight"
+                        subtitleClass="text-base font-medium -mt-2 mb-2 ml-1"
                     />
 
                     <SocialLinks
@@ -50,7 +50,7 @@ export default function Home() {
 
                 {/* CONTENIDO DESKTOP (Oculto en Mobile) */}
                 <div className="hidden md:flex flex-col-reverse md:flex-row flex-1 gap-0 md:gap-12 lg:gap-16 w-full items-stretch mt-0 sm:mt-2">
-                    <section className="flex flex-col gap-0 md:gap-8 w-full md:w-1/2 justify-center mt-0 sm:mt-1 md:mt-20 md:ml-12 lg:ml-24">
+                    <section className="flex flex-col gap-0 md:gap-8 w-full md:w-1/2 justify-center mt-0 sm:mt-1 md:mt-10 md:ml-12 lg:ml-24">
                         <HeroInfo
                             isDark={isDark}
                             containerClass="flex flex-col gap-0 md:gap-8 w-full justify-center"
