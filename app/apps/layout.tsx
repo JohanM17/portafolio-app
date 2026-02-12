@@ -10,7 +10,7 @@ export default function AppsLayout({ children }: { children: ReactNode }) {
     return (
         <div className="min-h-screen bg-black text-white">
             <Header compact={true} showBack={true} onShowInfoBeta={() => setShowInfoBeta(true)} />
-            <main className="px-4 py-8 max-w-3xl mx-auto w-full">
+            <main className="w-full min-h-screen">
                 {children}
             </main>
             <InfoBetaModal open={showInfoBeta} onClose={() => setShowInfoBeta(false)} />
