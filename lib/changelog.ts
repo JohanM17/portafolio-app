@@ -1,0 +1,49 @@
+export interface VersionLog {
+    version: string;
+    date: string;
+    title: string;
+    description: string;
+    features: string[];
+}
+
+export const changelog: VersionLog[] = [
+    {
+        version: "Beta 1.2",
+        date: "Febrero 2026",
+        title: "Expansión de Contenido y Arquitectura",
+        description: "Lanzamiento de la primera aplicación interna completa ('Quién Soy') y refactorización modular para soportar escalabilidad.",
+        features: [
+            "Nueva App: 'Quién Soy' con diseño inmersivo y glassmorphism.",
+            "Arquitectura de Layouts independientes para Apps full-screen.",
+            "Optimización de assets gráficos con conversión automática a WebP.",
+            "Mejoras de accesibilidad y contraste en Modo Oscuro.",
+            "Sistema de datos centralizado para fácil mantenimiento."
+        ]
+    },
+    {
+        version: "Beta 1.1",
+        date: "Febrero 2026",
+        title: "Refinamiento Visual para Mobile y Correcciones",
+        description: "Actualización enfocada en la estabilidad de la interfaz móvil y la coherencia del sistema de diseño.",
+        features: [
+            "Corrección de bugs visuales en el Dock (overflow en móviles).",
+            "Implementación de scroll horizontal suave (snap) para navegación táctil.",
+            "Soporte completo de Modo Oscuro en el menú hamburguesa.",
+            "Ajustes de espaciado y padding para mejor experiencia en desktop.",
+            "Mejoras en SEO y metadatos del sitio."
+        ]
+    },
+    {
+        version: "Beta 1.0",
+        date: "Enero 2026",
+        title: "Lanzamiento Inicial (MVP)",
+        description: "Versión fundacional del portafolio con concepto de 'Sistema Operativo Web'.",
+        features: [
+            "Home estilo Launcher con accesos directos visuales.",
+            "Dock de aplicaciones interactivo y animado.",
+            "Sistema de temas dual: Modo Color (Galaxia) y Modo Oscuro (Minimalista).",
+            "Diseño totalmente responsivo.",
+            "Componentes base de UI y animaciones de entrada."
+        ]
+    }
+];

@@ -4,16 +4,14 @@
 export const infoBeta = {
     titulo: "Versión Beta",
     descripcion: [
-        "Esta es la versión beta 1.1 del portafolio.",
-        "El Home fue diseñado con un estilo tipo launcher, integrando accesos visuales a las distintas secciones, foto de perfil y un header minimalista."
+        "Esta es la versión beta 1.2 del portafolio.",
+        "Ahora puede conocerme mas en la nueva aplicación '¿Quién Soy?', diseñada para contar mi historia y objetivos de una forma visual." 
     ],
     items: [
-        "Dock de aplicaciones con accesos directos",
-        "Modo oscuro y modo color, con selector manual",
-        "Selector de idioma (Español / Inglés)",
-        "Diseño responsivo para desktop y móvil",
-        "Secciones de información personal y contacto",
-        "Animaciones y detalles de interfaz enfocados en la experiencia visual"
+        "Nueva App: ¿Quién Soy? (Historia, Perfil y Diferenciadores)",
+        "Diseño inmersivo con modo galaxia y modo oscuro mejorado",
+        "Experiencia visual optimizada en computadoras y móviles",
+        "Mejoras de rendimiento y carga rápida de imágenes"
     ],
     nota: "Esta versión está en construcción así que falta todavía."
 };

@@ -26,8 +26,8 @@ export default function Header({ compact = false, showBack = false, onShowInfoBe
         <header
             className={
                 compact
-                    ? "flex items-center justify-between px-6 py-3 border-b border-emerald-900/40 bg-black/80 backdrop-blur-md"
-                    : "flex items-center justify-between w-full px-4 py-2 sm:px-6 sm:py-3 md:px-12 md:py-4 border-b border-emerald-900/40 bg-black/90 backdrop-blur-md shadow-lg fixed top-0 left-0 z-20"
+                    ? "flex items-center justify-between px-6 py-3 border-b border-emerald-900/40 bg-black/95 backdrop-blur-xl sticky top-0 z-50 shadow-md"
+                    : "flex items-center justify-between w-full px-4 py-2 sm:px-6 sm:py-3 md:px-12 md:py-4 border-b border-emerald-900/40 bg-black/90 backdrop-blur-md shadow-lg fixed top-0 left-0 z-50"
             }
             style={!compact ? {} : {}}
         >
