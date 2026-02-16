@@ -4,14 +4,14 @@
 export const infoBeta = {
     titulo: "Versión Beta",
     descripcion: [
-        "Esta es la versión beta 1.2 del portafolio.",
-        "Ahora puede conocerme mas en la nueva aplicación '¿Quién Soy?', diseñada para contar mi historia y objetivos de una forma visual." 
+        "Esta es la versión beta 1.3 del portafolio.",
+        "Se ha añadido la nueva aplicación de 'Skills', donde puedes explorar mis habilidades técnicas mediante un sistema de acordeones interactivo y dinámico."
     ],
     items: [
-        "Nueva App: ¿Quién Soy? (Historia, Perfil y Diferenciadores)",
-        "Diseño inmersivo con modo galaxia y modo oscuro mejorado",
-        "Experiencia visual optimizada en computadoras y móviles",
-        "Mejoras de rendimiento y carga rápida de imágenes"
+        "Nueva App: Skills (Acordeones interactivos y categorías)",
+        "Optimización de navegación y scroll en dispositivos móviles",
+        "Integración de navegación directa al Stack Técnico",
+        "Refinamiento visual en el sistema de componentes"
     ],
     nota: "Esta versión está en construcción así que falta todavía."
 };
