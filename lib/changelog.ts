@@ -8,6 +8,19 @@ export interface VersionLog {
 
 export const changelog: VersionLog[] = [
     {
+        version: "Beta 1.3",
+        date: "Febrero 2026",
+        title: "Pila Tecnológica y Habilidades",
+        description: "Lanzamiento de la aplicación de Skills con categorización técnica y optimización de la experiencia táctil.",
+        features: [
+            "Nueva App: 'Skills' basada en sistema de acordeones interactivos.",
+            "Visualización de habilidades técnicas, de ingeniería y complementarias.",
+            "Optimización del scroll y comportamiento touch para usuarios móviles.",
+            "Vinculación inteligente entre áreas de competencia y Stack Técnico.",
+            "Estandarización de assets de iconos y rutas de fondo."
+        ]
+    },
+    {
         version: "Beta 1.2",
         date: "Febrero 2026",
         title: "Expansión de Contenido y Arquitectura",
