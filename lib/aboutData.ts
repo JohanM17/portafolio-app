@@ -1,6 +1,6 @@
 export const aboutData = {
     hero: {
-        background: "/apps/about/Background-apps.webp",
+        background: "/apps/Background-apps.webp",
         portrait: "/apps/about/Clone_Johan.webp",
         title: "¿Quién soy?",
         description: [
@@ -12,7 +12,7 @@ export const aboutData = {
     },
     differentials: [
         {
-            icon: "/apps/about/icon-puzzle.png",  // Usamos png si borraste los webp de iconos
+            icon: "/apps/about/icon-puzzle.png",
             text: "Busco entender el problema antes de pensar en la tecnología."
         },
         {
