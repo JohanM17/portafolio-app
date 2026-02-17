@@ -4,14 +4,12 @@ import { useDarkMode } from "@/hooks/useDarkMode";
 import Header from "@/components/Header";
 import { InfoBetaModal } from "@/components/InfoBetaModal";
 import { BackgroundDecorativo } from "@/components/components-home/BackgroundDecorativo";
-import { CVModal } from "@/components/components-home/CVModal";
 import { AppDock } from "@/components/components-home/AppDock";
 import { ProfileImage } from "@/components/components-home/ProfileImage";
 import { SocialLinks } from "@/components/components-home/SocialLinks";
 import { HeroInfo } from "@/components/components-home/HeroInfo";
 
 export default function Home() {
-    const [showModal, setShowModal] = useState(false);
     const [showInfoBeta, setShowInfoBeta] = useState(false);
     const isDark = useDarkMode();
 
@@ -43,7 +41,6 @@ export default function Home() {
 
                     <SocialLinks
                         isDark={isDark}
-                        onShowCV={() => setShowModal(true)}
                         containerClass="flex flex-wrap items-center justify-center gap-4 mt-3 mb-2"
                     />
                 </div>
@@ -59,7 +56,6 @@ export default function Home() {
                         />
                         <SocialLinks
                             isDark={isDark}
-                            onShowCV={() => setShowModal(true)}
                             containerClass="flex flex-wrap items-center gap-4 sm:gap-6"
                         />
                     </section>
@@ -80,7 +76,6 @@ export default function Home() {
 
             {/* Modales */}
             <InfoBetaModal open={showInfoBeta} onClose={() => setShowInfoBeta(false)} />
-            <CVModal isOpen={showModal} onClose={() => setShowModal(false)} />
         </div>
     );
 }

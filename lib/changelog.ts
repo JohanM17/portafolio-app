@@ -8,6 +8,19 @@ export interface VersionLog {
 
 export const changelog: VersionLog[] = [
     {
+        version: "Beta 1.4",
+        date: "Febrero 2026",
+        title: "Accesibilidad Profesional e Integración de CV",
+        description: "Habilitación del acceso directo al Currículum Vitae (CV) y limpieza de componentes modales obsoletos.",
+        features: [
+            "Conexión del botón 'Ver CV' directamente al archivo PDF en public.",
+            "Eliminación del sistema de modales temporales para CV (Refactorización).",
+            "Centralización de la ruta del CV en personalInfo (lib/data.ts).",
+            "Optimización de los enlaces sociales y sus metadatos.",
+            "Mejora en la experiencia de descarga y visualización de documentos."
+        ]
+    },
+    {
         version: "Beta 1.3",
         date: "Febrero 2026",
         title: "Pila Tecnológica y Habilidades",
