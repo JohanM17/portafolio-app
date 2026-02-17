@@ -113,4 +113,5 @@ export const personalInfo = {
     phone: "[Tu Teléfono]",
     github: "https://github.com/JohanM17",
     linkedin: "https://www.linkedin.com/in/johan-molina-7a7a41381/",
+    cv: "/CV_Molina_Johan_2026.pdf",
 };

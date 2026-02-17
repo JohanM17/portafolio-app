@@ -4,14 +4,14 @@
 export const infoBeta = {
     titulo: "Versión Beta",
     descripcion: [
-        "Esta es la versión beta 1.3 del portafolio.",
-        "Se ha añadido la nueva aplicación de 'Skills', donde puedes explorar mis habilidades técnicas mediante un sistema de acordeones interactivo y dinámico."
+        "Esta es la versión beta 1.4 del portafolio.",
+        "Se ha habilitado el acceso directo a mi currículum profesional (CV) desde el Home, permitiendo visualizarlo y descargarlo de forma inmediata."
     ],
     items: [
-        "Nueva App: Skills (Acordeones interactivos y categorías)",
-        "Optimización de navegación y scroll en dispositivos móviles",
-        "Integración de navegación directa al Stack Técnico",
-        "Refinamiento visual en el sistema de componentes"
+        "Activación del botón Ver CV (Enlace directo al PDF)",
+        "Limpieza y optimización del código del Home",
+        "Mejoras en el acceso a información profesional",
+        "Refinamiento de interacciones y accesos directos"
     ],
     nota: "Esta versión está en construcción así que falta todavía."
 };
