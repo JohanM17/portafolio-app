@@ -9,7 +9,7 @@ export default function VersionBadge({ isDark }: { isDark: boolean }) {
                 className={`bg-white/90 text-black font-bold rounded-full px-4 py-1 shadow-lg text-sm tracking-widest border ${isDark ? 'border-white' : 'border-emerald-400/60'}`}
                 style={{ letterSpacing: '0.15em' }}
             >
-                Beta 1.3
+                Beta 1.4
             </span>
         </div>
     );

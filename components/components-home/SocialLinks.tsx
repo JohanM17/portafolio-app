@@ -3,30 +3,30 @@ import { personalInfo } from "@/lib/data";
 
 type SocialLinksProps = {
     isDark: boolean;
-    onShowCV: () => void;
     containerClass: string; // Recibimos las clases exactas del contenedor desde fuera
 };
 
-export function SocialLinks({ isDark, onShowCV, containerClass }: SocialLinksProps) {
+export function SocialLinks({ isDark, containerClass }: SocialLinksProps) {
     // Estilos comunes para los botones redondos (GitHub, LinkedIn)
     const iconBtnClass = `flex items-center justify-center rounded-full w-10 h-10 text-2xl transition shadow ${isDark
-            ? 'bg-black border border-white text-white shadow-none'
-            : 'bg-zinc-900 border border-emerald-400/40 text-white hover:bg-emerald-500/20'
+        ? 'bg-black border border-white text-white shadow-none'
+        : 'bg-zinc-900 border border-emerald-400/40 text-white hover:bg-emerald-500/20'
         }`;
 
     return (
         <div className={containerClass}>
-            {/* Botón Ver CV */}
-            <button
-                type="button"
-                onClick={onShowCV}
+            {/* Botón Ver CV, link directo al PDF */}
+            <a
+                href={personalInfo.cv}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition ${isDark
-                        ? 'border border-white bg-black text-white shadow-none'
-                        : 'border border-emerald-400/40 bg-black/80 text-emerald-100 shadow-[0_0_18px_rgba(16,185,129,0.4)] hover:bg-emerald-500/20'
+                    ? 'border border-white bg-black text-white shadow-none hover:bg-white/10'
+                    : 'border border-emerald-400/40 bg-black/80 text-emerald-100 shadow-[0_0_18px_rgba(16,185,129,0.4)] hover:bg-emerald-500/20'
                     }`}
             >
                 Ver CV
-            </button>
+            </a>
 
             {/* Link GitHub */}
             <a
