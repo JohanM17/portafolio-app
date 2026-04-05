@@ -33,8 +33,8 @@ export default function AboutPage() {
                 {/* SECCIÓN HERO: Foto + Texto (Full Width en PC) */}
                 <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-[1600px] mb-24">
 
-                    {/* Imagen del Personaje (Más pegado a la tarjeta) */}
-                    <div className="relative w-64 h-80 md:w-[450px] md:h-[600px] flex-shrink-0 animate-slide-in-left z-20 md:-mr-24 lg:-mr-32 mt-8 md:mt-0 pointer-events-none">
+                    {/* Imagen del Personaje (Oculto en móvil, visible en PC) */}
+                    <div className="hidden md:block relative w-64 h-80 md:w-[450px] md:h-[600px] flex-shrink-0 animate-slide-in-left z-20 md:-mr-24 lg:-mr-32 mt-8 md:mt-0 pointer-events-none">
                         <Image
                             src={aboutData.hero.portrait}
                             alt="Johan Molina"

@@ -12,27 +12,27 @@ export const aboutData = {
     },
     differentials: [
         {
-            icon: "/apps/about/icon-puzzle.png",
+            icon: "/apps/about/icon-puzzle.webp",
             text: "Busco entender el problema antes de pensar en la tecnología."
         },
         {
-            icon: "/apps/about/icon-connect.png",
+            icon: "/apps/about/icon-connect.webp",
             text: "Me interesa cómo se conectan las piezas del sistema."
         },
         {
-            icon: "/apps/about/icon-desing.png",
+            icon: "/apps/about/icon-desing.webp",
             text: "Priorizo diseño y claridad antes que complejidad innecesaria."
         },
         {
-            icon: "/apps/about/icon-team.png",
+            icon: "/apps/about/icon-team.webp",
             text: "Me adapto con facilidad a equipos y proyectos existentes."
         },
         {
-            icon: "/apps/about/icon-business.png",
+            icon: "/apps/about/icon-business.webp",
             text: "Comprendo el modelo de negocio antes de proponer soluciones técnicas."
         },
         {
-            icon: "/apps/about/icon-learn.png",
+            icon: "/apps/about/icon-learn.webp",
             text: "Aprendo constantemente y busco mejorar lo que ya funciona."
         }
     ],
