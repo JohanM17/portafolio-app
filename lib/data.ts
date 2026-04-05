@@ -103,11 +103,10 @@ export const apps: App[] = [
 // Información personal 
 export const personalInfo = {
     name: "Johan Molina",
-    title: "Full-Stack Developer Junior",
+    title: "Full-Stack Developer",
     subtitle: "Estudiante de ingeniería de Software - V Semestre",
     description:
-        "Estudiante de Ingeniería de Software y desarrollador full \
-        stack en proceso, con fuerte enfoque en diseño y arquitectura de software.",
+        "Estudiante de Ingeniería de Software y desarrollador Full-Stack, con fuerte enfoque en diseño y arquitectura de software.",
     email: "[tu-email@ejemplo.com]",
     location: "Colombia · Armenia, Quindío",
     phone: "[Tu Teléfono]",
