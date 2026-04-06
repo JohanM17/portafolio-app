@@ -98,19 +98,6 @@ export default function SkillsPage() {
                         </div>
                       ))}
                     </div>
-
-                    {/* Botón Ver Stack Interno */}
-                    <div className="flex justify-center">
-                      <Link
-                        href={`/apps/stack?filter=${category.id}`}
-                        className={`group relative px-8 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${isDark
-                          ? 'bg-zinc-800 border border-zinc-600 text-white hover:bg-zinc-700'
-                          : 'bg-emerald-900/30 border border-emerald-500/60 text-emerald-300 hover:bg-emerald-500/20 hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:border-emerald-400'
-                          }`}
-                      >
-                        <span>→ Ver Stack</span>
-                      </Link>
-                    </div>
                   </div>
                 </div>
               </div>
