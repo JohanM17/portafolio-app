@@ -8,6 +8,19 @@ export interface VersionLog {
 
 export const changelog: VersionLog[] = [
     {
+        version: "Beta 1.5",
+        date: "Abril 2026",
+        title: "Ecosistema Tecnológico e Interacción",
+        description: "Lanzamiento de la aplicación Stack con un sistema de exploración profundo de herramientas y entornos de desarrollo.",
+        features: [
+            "Nueva App: 'Stack' con navegación intuitiva por categorías especializadas.",
+            "Implementación del panel de detalles interactivo (Knowledge Panel).",
+            "Sincronización de base de conocimientos técnica para lenguajes y frameworks.",
+            "Integración visual de IDEs y utilidades de inteligencia artificial.",
+            "Optimización de assets para una carga fluida de la biblioteca de tecnologías."
+        ]
+    },
+    {
         version: "Beta 1.4",
         date: "Febrero 2026",
         title: "Accesibilidad Profesional e Integración de CV",
