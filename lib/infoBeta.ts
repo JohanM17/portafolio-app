@@ -4,15 +4,15 @@
 export const infoBeta = {
     titulo: "Versión Beta",
     descripcion: [
-        "Esta es la versión beta 1.5 del portafolio.",
-        "Se ha lanzado oficialmente la aplicación de 'Stack', un entorno interactivo diseñado para que explores a fondo mi ecosistema de herramientas, lenguajes y metodologías de trabajo."
+        "Esta es la versión beta 1.6 del portafolio.",
+        "Se ha integrado oficialmente la aplicación de 'Proyectos', un espacio dedicado a visualizar mis soluciones de software mediante una arquitectura Master-Detail y galería interactiva."
     ],
     items: [
-        "Nueva App: 'Stack' (Exploración tecnológica interactiva)",
-        "Panel de detalles con información técnica de cada herramienta",
-        "Integración de mis entornos de desarrollo e inteligencia artificial",
-        "Optimización de la biblioteca de iconos y assets visuales",
-        "Mejoras de navegación entre categorías del sistema"
+        "Nueva App: 'Proyectos' (Vitrina interactiva de experiencia)",
+        "Vista Master-Detail (Navegación lateral y detalle central)",
+        "Galería Lightbox con soporte para teclado y navegación fluida",
+        "Diseño responsivo con sistema de acordeones para móviles",
+        "Placeholders dinámicos para proyectos en desarrollo"
     ],
     nota: "Esta versión está en construcción así que falta todavía."
 };

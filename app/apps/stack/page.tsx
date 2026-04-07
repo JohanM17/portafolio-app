@@ -326,13 +326,13 @@ function StackContent() {
                 {/* BOTÓN DE NAVEGACIÓN INFERIOR */}
                 {!selectedTechId && (
                     <Link
-                        href="/apps/skills"
+                        href="/apps/projects"
                         className={`mt-20 group relative px-10 py-4 rounded-full font-medium text-lg transition-all duration-300 flex items-center gap-4 ${isDark
                             ? 'bg-zinc-800 border border-zinc-600 text-white hover:bg-zinc-700 shadow-lg'
                             : 'bg-emerald-900/30 border border-emerald-500/60 text-emerald-300 hover:bg-emerald-500/20'
                             }`}
                     >
-                        <span>Ver Skills</span>
+                        <span>Ver Proyectos</span>
                         <span className="group-hover:translate-x-1 transition-transform">→</span>
                     </Link>
                 )}

@@ -8,6 +8,19 @@ export interface VersionLog {
 
 export const changelog: VersionLog[] = [
     {
+        version: "Beta 1.6",
+        date: "Abril 2026",
+        title: "Portafolio de Proyectos y Experiencia Interactiva",
+        description: "Lanzamiento de la aplicación de Proyectos con un sistema de visualización avanzada y galería inmersiva.",
+        features: [
+            "Nueva App: 'Proyectos' con arquitectura Master-Detail.",
+            "Galería de imágenes con Lightbox y navegación por teclado.",
+            "Adaptación de UI para dispositivos móviles basada en secciones expandibles.",
+            "Integración de 'Proyectos' en el flujo de navegación del sistema.",
+            "Manejo de estados dinámicos para proyectos con imágenes y galerías pendientes."
+        ]
+    },
+    {
         version: "Beta 1.5",
         date: "Abril 2026",
         title: "Ecosistema Tecnológico e Interacción",
